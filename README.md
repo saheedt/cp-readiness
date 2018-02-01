@@ -1,2 +1,2 @@
-# demo
-demo repo
+# cp-readiness
+I'm Saheed, creator of this repo
