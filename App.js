@@ -3,6 +3,7 @@ Assuming these modules set have been installed via NPM/YARN
 */
 import react, { Component } from 'react'
 
+import List from './List'
 
 Class App extends Component{
   constructor(props){
@@ -28,6 +29,7 @@ Class App extends Component{
         <input value={this.state.term} onChange={this.onChange} />
         <button>Submit</button>
       </form>
+      <List items={this.state.items} />
     </main>
   }
 }
