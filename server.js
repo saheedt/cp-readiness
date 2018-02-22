@@ -1,26 +1,24 @@
 const express = require('express'),
-stormpath = require('express-stormpath'),
-app = express();
+viewPath = './views',
+routes = require('./router').routes
+app = express(),
+port = process.env.PORT || 3500;
 
-app.set('views', './views');
-app.set('view engine', 'jade');
+app.set('views', viewPath);
+app.set('view engine', 'html');
 
-app.use(stormpath.init(app, {
-  expand: {
-    customData: true
-  }
+routes(app)
+app.route('*').get((req, res) => res.status(404).send({
+  message: 'invalid route!',
+}));
+app.route('*').post((req, res) => res.status(404).send({
+  message: 'invalid route!',
+}));
+app.route('*').put((req, res) => res.status(404).send({
+  message: 'invalid route!',
+}));
+app.route('*').delete((req, res) => res.status(404).send({
+  message: 'invalid route!',
 }));
 
-app.get('/', stormpath.getUser, function(req, res) {
-  res.render('home', {
-    title: 'Welcome'
-  });
-});
-
-app.use('/profile',stormpath.loginRequired,require('./profile')());
-
-app.on('stormpath.ready',function(){
-  console.log('Stormpath Ready');
-});
-
-app.listen(3500);
+app.listen(port);
