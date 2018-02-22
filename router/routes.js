@@ -1,14 +1,12 @@
-const viewPath = '../views';
-const Routes = (app) => {
+
+exports.routes = (app, basepath) => {
     app.route('/').get(function(req,res){
-        res.sendFile(`${viewPath}/index.html`);
+        res.sendFile(`${basepath}/views/index.html`);
     });
     app.route('/about').get(function(req,res){
-        res.sendFile(`${viewPath}/about.html`);
+        res.sendFile(`${basepath}/views/about.html`);
     });
     app.route('/contact').get(function(req,res){
-        res.sendFile(`${viewPath}/contact.html`);
+            res.sendFile(`${basepath}/views/contact.html`);
     });
 }
-
-module.exports = Routes
