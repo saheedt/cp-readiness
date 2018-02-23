@@ -9,18 +9,10 @@ app.set('view engine', 'html')
 const routes = require('./router/routes').routes;
 routes(app, `${__dirname}`);
 
-app.route('*').get((req, res) => res.status(404).send({
-  message: 'invalid route!',
-}));
-app.route('*').post((req, res) => res.status(404).send({
-  message: 'invalid route!',
-}));
-app.route('*').put((req, res) => res.status(404).send({
-  message: 'invalid route!',
-}));
-app.route('*').delete((req, res) => res.status(404).send({
-  message: 'invalid route!',
-}));
+app.route('*').get((req, res) => res.status(404).sendFile(`${__dirname}/views/404.html`))
+app.route('*').post((req, res) => res.status(404).sendFile(`${__dirname}/views/404.html`))
+app.route('*').put((req, res) => res.status(404).sendFile(`${__dirname}/views/404.html`))
+app.route('*').delete((req, res) => res.status(404).sendFile(`${__dirname}/views/404.html`))
 
 app.listen(port,function(){
   console.log(`Live at Port ${port}`);
